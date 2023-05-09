@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag 'dolar' %>
+
+<h1>All Dolars</h1>
+
+<table class="dolar-table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Compra</th>
+    <th>Venta</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @dolars.each do |dolar| %>
+    <tr>
+      <td><%= dolar.name %></td>
+      <td><%= dolar.description %></td>
+      <td><%= dolar.compra %></td>
+      <td><%= dolar.venta %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

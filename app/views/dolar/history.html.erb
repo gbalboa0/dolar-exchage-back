@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag 'dolar' %>
+
+<h1>Select a Dolar</h1>
+
+<%= form_with url: history_dolar_index_path, method: :get do %>
+  <%= select_tag :dolar_id, options_from_collection_for_select(@dolars, "id", "name", params[:dolar_id]), include_blank: true %>
+  <%= submit_tag "View History", name: nil %>
+<% end %>
+
+
+<% if @selected_dolar.present? %>
+  <h2>Historic Prices for <%= @selected_dolar.name %></h2>
+
+  <table class="dolar-table">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Compra</th>
+      <th>Venta</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @dolar_histories.each do |dolar_history| %>
+      <tr>
+        <td><%= dolar_history.compra %></td>
+        <td><%= dolar_history.venta %></td>
+        <td><%= dolar_history.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
